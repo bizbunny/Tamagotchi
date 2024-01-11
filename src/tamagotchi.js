@@ -125,11 +125,13 @@ gameAudioOffBtn.addEventListener("click", function(){
 gameAudioOnBtn.addEventListener("click", function(){
 	gameAudioOn();
 });
+
 //Music toggle
 function gameAudioOff(){
-
+	//audio off
 }
 function gameAudioOn(){
+	//Audio on
 	
 }
 //NightMode toggle
@@ -303,8 +305,3 @@ function startGame() {
 		}
 	}
 }
-//Audio
-let a = document.getElementById("bgMusic");
-a.loop = true;
-a.onload();
-alert(a.loop);

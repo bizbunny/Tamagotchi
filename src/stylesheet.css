@@ -31,7 +31,7 @@ h3 {
 
 /*MENU SCREEN*/
 
-.menu {
+.menu , .settings , .exit  {
   position: absolute;
   top: 50vh;
   transform: translateY(-50%);
@@ -40,14 +40,6 @@ h3 {
 }
 
 /*SETTINGS SCREEN*/
-
-.settings {
-  position: absolute;
-  top: 50vh;
-  transform: translateY(-50%);
-  width: 100%;
-  text-align: center;
-}
 
 .settings-buttons a {
   display: inline-block;
@@ -202,27 +194,12 @@ body.nightmode-on {
   color: #ffc0a5;
 }
 
-body.nightmode-on .settings-buttons a {
+body.nightmode-on .settings-buttons a , body.nightmode-on .buttons a , body.nightmode-on .menu-buttons a {
   color: #ffc0a5;
   border: 2px solid #ffc0a5;
 }
 
-body.nightmode-on .settings-buttons a:hover {
-  background-color: #ffc0a5;
-  color: #210645;
-}
-
-body.nightmode-on #name {
-  color: #210645;
-  background-color: #ffc0a5;
-}
-
-body.nightmode-on .buttons a, body.nightmode-on .menu-buttons a {
-  color: #ffc0a5;
-  border: 2px solid #ffc0a5;
-}
-
-body.nightmode-on .buttons a:hover, body.nightmode-on .menu-buttons a:hover {
+body.nightmode-on .settings-buttons a:hover , body.nightmode-on #name , body.nightmode-on .buttons a:hover , body.nightmode-on .menu-buttons a:hover  {
   background-color: #ffc0a5;
   color: #210645;
 }

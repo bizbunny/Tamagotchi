@@ -4,12 +4,14 @@ const sleepBtn = document.querySelector("#action-sleep");
 const feedBtn = document.querySelector("#action-feed");
 const playBtn = document.querySelector("#action-play");
 const startBtn = document.querySelector("#action-menu-start-game");
+
 const settingsBtn = document.querySelector("#action-menu-settings");
-const exitBtn = document.querySelector("action-menu-exit");
 const settingsBackBtn = document.querySelector("#action-settings-back");
 const difHardBtn = document.querySelector("#action-settings-difficulty-hard");
 const difNormalBtn = document.querySelector("#action-settings-difficulty-normal");
 const difEasyBtn = document.querySelector("#action-settings-difficulty-easy");
+
+const exitBtn = document.querySelector("#action-menu-exit");
 const nightModeOffBtn = document.querySelector("#nightmode-off");
 const nightModeOnBtn = document.querySelector("#nightmode-on");
 //
@@ -87,7 +89,9 @@ startBtn.addEventListener("click", function() {
 settingsBtn.addEventListener("click", function() {
 	settingsMenu();
 });
-
+exitBtn.addEventListener("click", function () {
+    exitMenu();
+});
 difHardBtn.addEventListener("click", function() {
 	day = 5;
 	document.querySelector("#difSet").innerHTML = "Hard";
@@ -129,6 +133,7 @@ function nightModeOff() {
 //Togglers for buttons
 document.querySelector(".game-screen").classList.toggle("hide");
 document.querySelector(".menu-screen-settings").classList.toggle("hide");
+document.querySelector(".menu-screen-exit").classList.toggle("hide");
 
 function MainMenu() {
 	document.querySelector(".menu-screen-settings").classList.toggle("hide");
@@ -139,7 +144,10 @@ function settingsMenu() {
 	document.querySelector(".main-menu-screen").classList.toggle("hide");
 	document.querySelector(".menu-screen-settings").classList.toggle("hide");
 }
-
+function exitMenu() {
+    document.querySelector(".main-menu-screen").classList.toggle("hide");
+    document.querySelector(".menu-screen-exit").classList.toggle("hide");
+}
 function startGame() {
 	document.querySelector(".game-screen").classList.toggle("hide");
 	document.querySelector(".main-menu-screen").classList.toggle("hide");

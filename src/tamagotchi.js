@@ -1,4 +1,3 @@
-//
 //Constants for buttons
 const sleepBtn = document.querySelector("#action-sleep");
 const feedBtn = document.querySelector("#action-feed");
@@ -14,6 +13,8 @@ const difEasyBtn = document.querySelector("#action-settings-difficulty-easy");
 const exitBtn = document.querySelector("#action-menu-exit");
 const nightModeOffBtn = document.querySelector("#nightmode-off");
 const nightModeOnBtn = document.querySelector("#nightmode-on");
+const gameAudioOffBtn = document.querySelector("#gameaudio-off");
+const gameAudioOnBtn = document.querySelector("#gameaudio-on");
 //
 //Constants for main bar
 const sleepHp = document.querySelector("#sleep-hp");
@@ -118,7 +119,19 @@ nightModeOffBtn.addEventListener("click", function() {
 nightModeOnBtn.addEventListener("click", function() {
 	nightModeOn();
 });
+gameAudioOffBtn.addEventListener("click", function(){
+	gameAudioOff();
+});
+gameAudioOnBtn.addEventListener("click", function(){
+	gameAudioOn();
+});
+//Music toggle
+function gameAudioOff(){
 
+}
+function gameAudioOn(){
+	
+}
 //NightMode toggle
 function nightModeOn() {
 	document.querySelector('body').classList.add("nightmode-on");
@@ -290,3 +303,8 @@ function startGame() {
 		}
 	}
 }
+//Audio
+let a = document.getElementById("bgMusic");
+a.loop = true;
+a.onload();
+alert(a.loop);

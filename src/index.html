@@ -27,7 +27,7 @@
 				<a href="#" id="action-settings-difficulty-normal">Normal</a>
 				<a href="#" id="action-settings-difficulty-easy">Easy</a>
 				<br>
-				<h3>Music: <span id="gameaudio">off</span></h3>
+				<h3>Music: <span id="gameaudio">on</span></h3>
 				<a href="#" id="gameaudio-on">On</a>
 				<a href="#" id="gameaudio-off">Off</a>
 				<br>
@@ -53,7 +53,8 @@
 			<div class="hp">
 				<p>Sleep: <span id="sleep-hp"></span>%</p>
 				<p>Hunger: <span id="hunger-hp"></span>%</p>
-				<p>Play: <span id="play-hp"></span>%</p><br>
+				<p>Play: <span id="play-hp"></span>%</p>
+				<p>Dirtiness: <span id="dirty-hp"></span>%</p><br>
 				<p id="score-bar">Score: <span id="score"></span></p>
 			</div>
 
@@ -64,14 +65,16 @@
 				<a href="#" id="action-sleep">Sleep</a>
 				<a href="#" id="action-feed">Feed</a>
 				<a href="#" id="action-play">Play</a>
+				<a href="#" id="action-clean">Clean</a>
 			</div>
 		</div>
 	</div>
     <script src="tamagotchi.js"></script>
 	<!--<audio id="bgmusic" src="assets/cuteBGmusic.mp3" type="audio/mpeg" loop></audio>-->
     <!--<audio src="assets/cuteBGmusic.mp3" autoplay loop></audio>-->
-    <audio id="bgmusic">
+    <audio id="bgmusic" autoplay loop>
         <source src="assets/cuteBGmusic.mp3" type="audio/mpeg">
+		<source src="assets/cuteBGmusic.ogg" type="audio/ogg">
     </audio>
 </body>
 </html>

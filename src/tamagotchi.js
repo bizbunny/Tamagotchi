@@ -2,6 +2,7 @@
 const sleepBtn = document.querySelector("#action-sleep");
 const feedBtn = document.querySelector("#action-feed");
 const playBtn = document.querySelector("#action-play");
+const cleanBtn = document.querySelector("#action-clean");
 const startBtn = document.querySelector("#action-menu-start-game");
 
 const settingsBtn = document.querySelector("#action-menu-settings");
@@ -20,6 +21,7 @@ const gameAudioOnBtn = document.querySelector("#gameaudio-on");
 const sleepHp = document.querySelector("#sleep-hp");
 const hungerHp = document.querySelector("#hunger-hp");
 const playHp = document.querySelector("#play-hp");
+const dirtyHp = document.querySelector("#dirty-hp");
 const scoreBar = document.querySelector("#score");
 //
 //Constants for body
@@ -35,14 +37,19 @@ const mouth = document.querySelector("#mouth");
 const maxSleep = 300;
 const maxHunger = 300;
 const maxPlay = 300;
+const minDirty = 0;
 //Game speed
 let day = 20;
+
+//Game Music settings
+let paused = false;
 
 //New object
 function Tamagotchi() {
   this.sleep = maxSleep;
   this.hunger = maxHunger;
   this.play = maxPlay;
+  this.dirty = minDirty;
 }
 
 //Abilities
@@ -57,17 +64,21 @@ Tamagotchi.prototype.actionEat = function() {
 Tamagotchi.prototype.actionPlay = function() {
 	this.play+=80 / (day * 2)
 };
-
+Tamagotchi.prototype.actionClean = function(){
+	this.dirty-=80 / (day * 2)
+}
 Tamagotchi.prototype.tick = function() {
     this.sleep--;
     this.hunger-=3;
     this.play-=2;
+	this.dirty+=2;
 };
 
 let tmgch = new Tamagotchi();
 let sleepHpCount;
 let hungerHpCount;
 let playHpCount;
+let dirtyHpCount;
 let score = 0;
 
 //Controllers
@@ -81,6 +92,9 @@ feedBtn.addEventListener("click", function() {
 
 playBtn.addEventListener("click", function() {
 	tmgch.actionPlay();
+});
+cleanBtn.addEventListener("click", function(){
+	tmgch.actionClean();
 });
 
 startBtn.addEventListener("click", function() {
@@ -129,9 +143,12 @@ gameAudioOnBtn.addEventListener("click", function(){
 //Music toggle
 function gameAudioOff(){
 	//audio off
+	document.querySelector('#gameaudio').innerHTML = "off";
+
 }
 function gameAudioOn(){
 	//Audio on
+	document.querySelector('#gameaudio').innerHTML = "on";
 	
 }
 //NightMode toggle
@@ -185,16 +202,18 @@ function startGame() {
 		sleepHpCount = (tmgch.sleep / maxSleep * 100).toFixed(2);
 		hungerHpCount = (tmgch.hunger / maxHunger * 100).toFixed(2);
 		playHpCount = (tmgch.play / maxPlay * 100).toFixed(2);
+		dirtyHpCount = (tmgch.dirty / minDirty * 100).toFixed(2);
 
 		//Scores
 		score++;
 		scoreBar.innerHTML = score;
 
 		//Death ability
-		if ((playHpCount <= 0) || (sleepHpCount <= 0) || (hungerHpCount <= 0)) {
+		if ((playHpCount <= 0) || (sleepHpCount <= 0) || (hungerHpCount <= 0) || (dirtyHpCount >= 100)) {
 			playHpCount = 0;
 			sleepHpCount = 0;
 			hungerHpCount = 0;
+			dirtyHpCount = 100;
 			clearInterval(coreUpdate);
 			alert('Your score: ' + score + '\n ╭(×_×)╮');
 		}
@@ -212,6 +231,9 @@ function startGame() {
 		if (tmgch.play >= (maxPlay + (maxPlay / 100 * 20))) {
 			tmgch.play = maxPlay + (maxPlay / 100 * 20);
 		}
+		if(tmgch.dirty >= (minDirty + (minDirty / 100 * 20))){
+			tmgch.dirty = minDirty + (minDirty / 100 * 20);
+		}
 
 		//Max health percentage (for player)
 		if ((tmgch.sleep / maxSleep * 100) > 100) {
@@ -223,11 +245,15 @@ function startGame() {
 		if ((tmgch.play / maxPlay * 100) > 100) {
 			playHpCount = 100;
 		}
+		if((tmgch.dirty / minDirty * 100) < 0) {
+			dirtyHpCount = 0;
+		}
 
 		//Show HP on screen
 		sleepHp.innerHTML = sleepHpCount;
 		hungerHp.innerHTML = hungerHpCount;
 		playHp.innerHTML = playHpCount;
+		dirtyHp.innerHTML = dirtyHpCount;
 
 		//Remove HP every tick
 		tmgch.tick();

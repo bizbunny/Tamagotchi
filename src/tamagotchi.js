@@ -3,10 +3,11 @@ const sleepBtn = document.querySelector("#action-sleep");
 const feedBtn = document.querySelector("#action-feed");
 const playBtn = document.querySelector("#action-play");
 const cleanBtn = document.querySelector("#action-clean");
-const startBtn = document.querySelector("#action-menu-start-game");
 
+const startBtn = document.querySelector("#action-menu-start-game");
 const settingsBtn = document.querySelector("#action-menu-settings");
 const settingsBackBtn = document.querySelector("#action-settings-back");
+
 const difHardBtn = document.querySelector("#action-settings-difficulty-hard");
 const difNormalBtn = document.querySelector("#action-settings-difficulty-normal");
 const difEasyBtn = document.querySelector("#action-settings-difficulty-easy");
@@ -16,14 +17,14 @@ const nightModeOffBtn = document.querySelector("#nightmode-off");
 const nightModeOnBtn = document.querySelector("#nightmode-on");
 const gameAudioOffBtn = document.querySelector("#gameaudio-off");
 const gameAudioOnBtn = document.querySelector("#gameaudio-on");
-//
+
 //Constants for main bar
 const sleepHp = document.querySelector("#sleep-hp");
 const hungerHp = document.querySelector("#hunger-hp");
 const playHp = document.querySelector("#play-hp");
 const dirtyHp = document.querySelector("#dirty-hp");
 const scoreBar = document.querySelector("#score");
-//
+
 //Constants for body
 const effectLeft = document.querySelector("#effect-left");
 const effectRight = document.querySelector("#effect-right");
@@ -42,7 +43,7 @@ const minDirty = 0;
 let day = 20;
 
 //Game Music settings
-let paused = false;
+//let paused = false;
 
 //New object
 function Tamagotchi() {
@@ -64,8 +65,8 @@ Tamagotchi.prototype.actionEat = function() {
 Tamagotchi.prototype.actionPlay = function() {
 	this.play+=80 / (day * 2)
 };
-Tamagotchi.prototype.actionClean = function(){
-	this.dirty-=80 / (day * 2)
+Tamagotchi.prototype.actionDirty = function(){
+	this.dirty-=40 / (day * 2)
 }
 Tamagotchi.prototype.tick = function() {
     this.sleep--;
@@ -94,7 +95,7 @@ playBtn.addEventListener("click", function() {
 	tmgch.actionPlay();
 });
 cleanBtn.addEventListener("click", function(){
-	tmgch.actionClean();
+	tmgch.actionDirty();
 });
 
 startBtn.addEventListener("click", function() {
@@ -188,7 +189,7 @@ function startGame() {
 	var tamagotchiName = prompt("Please, enter a name of your tamagotchi:", "");
 	document.querySelector("#name").innerHTML = tamagotchiName;
 	if (tamagotchiName == null || tamagotchiName.replace(/\s/g, '') == "") {
-		tamagotchiName = "Tamagotchi";
+		tamagotchiName = "Tama";
 		document.querySelector("#name").innerHTML = tamagotchiName;
 	}
 
@@ -202,14 +203,14 @@ function startGame() {
 		sleepHpCount = (tmgch.sleep / maxSleep * 100).toFixed(2);
 		hungerHpCount = (tmgch.hunger / maxHunger * 100).toFixed(2);
 		playHpCount = (tmgch.play / maxPlay * 100).toFixed(2);
-		dirtyHpCount = (tmgch.dirty / minDirty * 100).toFixed(2);
+		dirtyHpCount = (tmgch.dirty / maxPlay * 100).toFixed(2);
 
 		//Scores
 		score++;
 		scoreBar.innerHTML = score;
 
 		//Death ability
-		if ((playHpCount <= 0) || (sleepHpCount <= 0) || (hungerHpCount <= 0) || (dirtyHpCount >= 100)) {
+		if ((playHpCount <= 0) || (sleepHpCount <= 0) || (hungerHpCount <= 0) || (dirtyHpCount >= 99)) {
 			playHpCount = 0;
 			sleepHpCount = 0;
 			hungerHpCount = 0;
@@ -231,8 +232,9 @@ function startGame() {
 		if (tmgch.play >= (maxPlay + (maxPlay / 100 * 20))) {
 			tmgch.play = maxPlay + (maxPlay / 100 * 20);
 		}
-		if(tmgch.dirty >= (minDirty + (minDirty / 100 * 20))){
-			tmgch.dirty = minDirty + (minDirty / 100 * 20);
+		//Min dirty percentage (real)
+		if(tmgch.dirty <= (minDirty + (minDirty / 100 * 20))){
+			tmgch.dirty = 0;
 		}
 
 		//Max health percentage (for player)
@@ -245,6 +247,7 @@ function startGame() {
 		if ((tmgch.play / maxPlay * 100) > 100) {
 			playHpCount = 100;
 		}
+		//Min dirty percentage (for player)
 		if((tmgch.dirty / minDirty * 100) < 0) {
 			dirtyHpCount = 0;
 		}
@@ -261,40 +264,48 @@ function startGame() {
 		//Animations
 
 		//Hunger bar
-		if (hungerHpCount <= 0) {
-			mouth.innerHTML = "_";
-		} else if (hungerHpCount < 20) {
-			mouth.innerHTML = "0";
-		} else if (hungerHpCount < 40) {
-			mouth.innerHTML = "O";
-		} else if (hungerHpCount < 60) {
-			mouth.innerHTML = "o";
-		} else if (hungerHpCount < 80) {
-			mouth.innerHTML = "-";
-		} else if (hungerHpCount > 80) {
-			mouth.innerHTML = "▿";
+		switch(true){
+			case hungerHpCount <= 0:mouth.innerHTML = "_";
+				break;
+			case hungerHpCount < 20:mouth.innerHTML = "0";
+				break;
+			case hungerHpCount < 40:mouth.innerHTML = "O";
+				break;
+			case hungerHpCount < 60:mouth.innerHTML = "o";
+				break;
+			case hungerHpCount < 80:mouth.innerHTML = "-";
+				break;
+			case hungerHpCount > 80:mouth.innerHTML = "▿";
+				break;
 		}
-
+	
 		//Sleep bar
-		if (sleepHpCount <= 0) {
-			eyeLeft.innerHTML = "×";
-			eyeRight.innerHTML = "×";
-		} else if (sleepHpCount < 20) {
-			eyeLeft.innerHTML = "◡";
-			eyeRight.innerHTML = "◡";
-			mouth.innerHTML = ".";
-		} else if (sleepHpCount < 40) {
-			eyeLeft.innerHTML = " ´ ";
-			eyeRight.innerHTML = " ` ";
-		} else if (sleepHpCount < 60) {
-			eyeLeft.innerHTML = "●";
-			eyeRight.innerHTML = "●";
-		} else if (sleepHpCount < 80) {
-			eyeLeft.innerHTML = "・";
-			eyeRight.innerHTML = "・";
-		} else if (sleepHpCount > 80) {
-			eyeLeft.innerHTML = "＾";
-			eyeRight.innerHTML = "＾";
+		switch(true){
+			case sleepHpCount <= 0:
+				eyeLeft.innerHTML = "×";
+				eyeRight.innerHTML = "×";
+				break;
+			case sleepHpCount < 20:
+				eyeLeft.innerHTML = "◡";
+				eyeRight.innerHTML = "◡";
+				mouth.innerHTML = ".";
+				break;
+			case sleepHpCount < 40:
+				eyeLeft.innerHTML = " ´ ";
+				eyeRight.innerHTML = " ` ";
+				break;
+			case sleepHpCount < 60:
+				eyeLeft.innerHTML = "●";
+				eyeRight.innerHTML = "●";
+				break;
+			case sleepHpCount < 80:
+				eyeLeft.innerHTML = "・";
+				eyeRight.innerHTML = "・";
+				break;
+			case sleepHpCount > 80:
+				eyeLeft.innerHTML = "＾";
+				eyeRight.innerHTML = "＾";
+				break;
 		}
 
 		//Play bar

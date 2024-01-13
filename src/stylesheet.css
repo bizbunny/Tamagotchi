@@ -134,7 +134,29 @@ h3 {
   display: inline;
 }
 
-@media (max-width: 860px) {
+/*Night mode*/
+
+body.nightmode-on {
+  background-color: #210645;
+  color: #ffc0a5;
+}
+
+body.nightmode-on .settings-buttons a,
+body.nightmode-on .buttons a,
+body.nightmode-on .menu-buttons a {
+  color: #ffc0a5;
+  border: 2px solid #ffc0a5;
+}
+
+body.nightmode-on .settings-buttons a:hover,
+body.nightmode-on #name,
+body.nightmode-on .buttons a:hover,
+body.nightmode-on .menu-buttons a:hover {
+  background-color: #ffc0a5;
+  color: #210645;
+}
+
+@media (max-width: 760px) {
   .hp {
     font-size: 20px;
   }
@@ -164,42 +186,8 @@ h3 {
   #t-body {
     font-size: 40px;
   }
-}
-
-@media (max-width: 540px) {
-  .hp p {
-    font-size: 20px;
-    display: block;
-  }
-  .buttons a, .menu-buttons a, .settings-buttons a {
-    font-size: 20px;
-    margin: 20px 2px 0px 2px;
-  }
-  #name {
-    font-size: 20px;
-  }
-  #t-body {
-    font-size: 30px;
-  }
-  .tamagotchi {
-    top: 120px;
-    transform: translateY(0);
-  }
-}
-
-/*Night mode*/
-
-body.nightmode-on {
-  background-color: #210645;
-  color: #ffc0a5;
-}
-
-body.nightmode-on .settings-buttons a , body.nightmode-on .buttons a , body.nightmode-on .menu-buttons a {
-  color: #ffc0a5;
-  border: 2px solid #ffc0a5;
-}
-
-body.nightmode-on .settings-buttons a:hover , body.nightmode-on #name , body.nightmode-on .buttons a:hover , body.nightmode-on .menu-buttons a:hover  {
-  background-color: #ffc0a5;
-  color: #210645;
+    .tamagotchi {
+      top: 120px;
+      transform: translateY(0);
+    }
 }

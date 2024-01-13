@@ -1,30 +1,28 @@
+//
 //Constants for buttons
 const sleepBtn = document.querySelector("#action-sleep");
 const feedBtn = document.querySelector("#action-feed");
 const playBtn = document.querySelector("#action-play");
+const startBtn = document.querySelector("#action-menu-start-game");
 const cleanBtn = document.querySelector("#action-clean");
 
-const startBtn = document.querySelector("#action-menu-start-game");
 const settingsBtn = document.querySelector("#action-menu-settings");
 const settingsBackBtn = document.querySelector("#action-settings-back");
-
 const difHardBtn = document.querySelector("#action-settings-difficulty-hard");
 const difNormalBtn = document.querySelector("#action-settings-difficulty-normal");
 const difEasyBtn = document.querySelector("#action-settings-difficulty-easy");
-
 const exitBtn = document.querySelector("#action-menu-exit");
+
 const nightModeOffBtn = document.querySelector("#nightmode-off");
 const nightModeOnBtn = document.querySelector("#nightmode-on");
-const gameAudioOffBtn = document.querySelector("#gameaudio-off");
-const gameAudioOnBtn = document.querySelector("#gameaudio-on");
-
+//
 //Constants for main bar
 const sleepHp = document.querySelector("#sleep-hp");
 const hungerHp = document.querySelector("#hunger-hp");
 const playHp = document.querySelector("#play-hp");
-const dirtyHp = document.querySelector("#dirty-hp");
 const scoreBar = document.querySelector("#score");
-
+const dirtyHp = document.querySelector("#dirty-hp");
+//
 //Constants for body
 const effectLeft = document.querySelector("#effect-left");
 const effectRight = document.querySelector("#effect-right");
@@ -42,9 +40,6 @@ const minDirty = 0;
 //Game speed
 let day = 20;
 
-//Game Music settings
-//let paused = false;
-
 //New object
 function Tamagotchi() {
   this.sleep = maxSleep;
@@ -59,15 +54,16 @@ Tamagotchi.prototype.actionSleep = function() {
 };
 
 Tamagotchi.prototype.actionEat = function() {
-	this.hunger+=120 / (day * 2)
+  this.hunger+=120 / (day * 2)
 };
 
 Tamagotchi.prototype.actionPlay = function() {
-	this.play+=80 / (day * 2)
+  this.play+=80 / (day * 2)
 };
 Tamagotchi.prototype.actionDirty = function(){
 	this.dirty-=40 / (day * 2)
 }
+
 Tamagotchi.prototype.tick = function() {
     this.sleep--;
     this.hunger-=3;
@@ -84,83 +80,65 @@ let score = 0;
 
 //Controllers
 sleepBtn.addEventListener("click", function() {
-	tmgch.actionSleep();
+  tmgch.actionSleep();
 });
 
 feedBtn.addEventListener("click", function() {
-	tmgch.actionEat();
+  tmgch.actionEat();
 });
 
 playBtn.addEventListener("click", function() {
-	tmgch.actionPlay();
+  tmgch.actionPlay();
 });
 cleanBtn.addEventListener("click", function(){
 	tmgch.actionDirty();
 });
-
 startBtn.addEventListener("click", function() {
-	startGame();
+  startGame();
 });
 
 settingsBtn.addEventListener("click", function() {
-	settingsMenu();
+  settingsMenu();
 });
 exitBtn.addEventListener("click", function () {
     exitMenu();
 });
 difHardBtn.addEventListener("click", function() {
-	day = 5;
-	document.querySelector("#difSet").innerHTML = "Hard";
+  day = 5;
+  document.querySelector("#difSet").innerHTML = "Hard";
 });
 
 difNormalBtn.addEventListener("click", function() {
-	day = 20;
-	document.querySelector("#difSet").innerHTML = "Normal";
+  day = 20;
+  document.querySelector("#difSet").innerHTML = "Normal";
 });
 
 difEasyBtn.addEventListener("click", function() {
-	day = 40;
-	document.querySelector("#difSet").innerHTML = "Easy";
+  day = 40;
+  document.querySelector("#difSet").innerHTML = "Easy";
 });
 
 settingsBackBtn.addEventListener("click", function() {
-	MainMenu();
+  MainMenu();
 });
 
 nightModeOffBtn.addEventListener("click", function() {
-	nightModeOff();
+  nightModeOff();
 });
 
 nightModeOnBtn.addEventListener("click", function() {
-	nightModeOn();
-});
-gameAudioOffBtn.addEventListener("click", function(){
-	gameAudioOff();
-});
-gameAudioOnBtn.addEventListener("click", function(){
-	gameAudioOn();
+  nightModeOn();
 });
 
-//Music toggle
-function gameAudioOff(){
-	//audio off
-	document.querySelector('#gameaudio').innerHTML = "off";
-
-}
-function gameAudioOn(){
-	//Audio on
-	document.querySelector('#gameaudio').innerHTML = "on";
-	
-}
 //NightMode toggle
 function nightModeOn() {
-	document.querySelector('body').classList.add("nightmode-on");
-	document.querySelector('#nightmode').innerHTML = "on";
+  document.querySelector('body').classList.add("nightmode-on");
+  document.querySelector('#nightmode').innerHTML = "on";
 }
 
 function nightModeOff() {
-	document.querySelector('body').classList.remove("nightmode-on");
-	document.querySelector('#nightmode').innerHTML = "off";
+  document.querySelector('body').classList.remove("nightmode-on");
+  document.querySelector('#nightmode').innerHTML = "off";
 }
 
 //Togglers for buttons
@@ -169,118 +147,107 @@ document.querySelector(".menu-screen-settings").classList.toggle("hide");
 document.querySelector(".menu-screen-exit").classList.toggle("hide");
 
 function MainMenu() {
-	document.querySelector(".menu-screen-settings").classList.toggle("hide");
-	document.querySelector(".main-menu-screen").classList.toggle("hide");
+  document.querySelector(".menu-screen-settings").classList.toggle("hide");
+  document.querySelector(".main-menu-screen").classList.toggle("hide");
 }
 
 function settingsMenu() {
-	document.querySelector(".main-menu-screen").classList.toggle("hide");
-	document.querySelector(".menu-screen-settings").classList.toggle("hide");
+  document.querySelector(".main-menu-screen").classList.toggle("hide");
+  document.querySelector(".menu-screen-settings").classList.toggle("hide");
 }
-function exitMenu() {
-    document.querySelector(".main-menu-screen").classList.toggle("hide");
-    document.querySelector(".menu-screen-exit").classList.toggle("hide");
-}
-function startGame() {
-	document.querySelector(".game-screen").classList.toggle("hide");
-	document.querySelector(".main-menu-screen").classList.toggle("hide");
 
-	//Tamagotchi's name
-	var tamagotchiName = prompt("Please, enter a name of your tamagotchi:", "");
-	document.querySelector("#name").innerHTML = tamagotchiName;
-	if (tamagotchiName == null || tamagotchiName.replace(/\s/g, '') == "") {
-		tamagotchiName = "Tama";
-		document.querySelector("#name").innerHTML = tamagotchiName;
+function startGame() {
+  document.querySelector(".game-screen").classList.toggle("hide");
+  document.querySelector(".main-menu-screen").classList.toggle("hide");
+
+  //Tamagotchi's name
+  var tamagotchiName = prompt("Please, enter a name of your tamagotchi:", "");
+  document.querySelector("#name").innerHTML = tamagotchiName;
+  if (tamagotchiName == null || tamagotchiName.replace(/\s/g, '') == "") {
+    tamagotchiName = "Tamagotchi";
+    document.querySelector("#name").innerHTML = tamagotchiName;
+  }
+
+  //Start game
+  core();
+  let coreUpdate = setInterval(core, 100 * day);
+
+  //Main function of tamagotchi
+  function core() {
+    //console.log(tmgch);
+    sleepHpCount = (tmgch.sleep / maxSleep * 100).toFixed(2);
+    hungerHpCount = (tmgch.hunger / maxHunger * 100).toFixed(2);
+    playHpCount = (tmgch.play / maxPlay * 100).toFixed(2);
+	dirtyHpCount = (tmgch.dirty / maxPlay * 100).toFixed(2);
+
+    //Scores
+    score++;
+    scoreBar.innerHTML = score;
+
+    //Death ability
+    if ((playHpCount <= 0) || (sleepHpCount <= 0) || (hungerHpCount <= 0) || (dirtyHpCount >= 99)) {
+      playHpCount = 0;
+      sleepHpCount = 0;
+      hungerHpCount = 0;
+	  dirtyHpCount = 100;
+      clearInterval(coreUpdate);
+      alert('Your score: ' + score + '\n ╭(×_×)╮');
+    }
+
+    //Max health percentage (real)
+    //Little help for player
+    if (tmgch.sleep >= (maxSleep + (maxSleep / 100 * 20))) {
+      tmgch.sleep = maxSleep + (maxSleep / 100 * 20);
+    }
+
+    if (tmgch.hunger >= (maxHunger + (maxHunger / 100 * 20))) {
+      tmgch.hunger = maxHunger + (maxHunger / 100 * 20);
+    }
+
+    if (tmgch.play >= (maxPlay + (maxPlay / 100 * 20))) {
+      tmgch.play = maxPlay + (maxPlay / 100 * 20);
+    }
+
+    //Max health percentage (for player)
+    if ((tmgch.sleep / maxSleep * 100) > 100) {
+      sleepHpCount = 100;
+    }
+    if ((tmgch.hunger / maxHunger * 100) > 100) {
+      hungerHpCount = 100;
+    }
+    if ((tmgch.play / maxPlay * 100) > 100) {
+      playHpCount = 100;
+    }
+
+    //Show HP on screen
+    sleepHp.innerHTML = sleepHpCount;
+    hungerHp.innerHTML = hungerHpCount;
+    playHp.innerHTML = playHpCount;
+	dirtyHp.innerHTML = dirtyHpCount;
+
+    //Remove HP every tick
+    tmgch.tick();
+
+    //Animations
+
+    //Hunger bar
+    switch(true){
+		case hungerHpCount <= 0:mouth.innerHTML = "_";
+			break;
+		case hungerHpCount < 20:mouth.innerHTML = "0";
+			break;
+		case hungerHpCount < 40:mouth.innerHTML = "O";
+			break;
+		case hungerHpCount < 60:mouth.innerHTML = "o";
+			break;
+		case hungerHpCount < 80:mouth.innerHTML = "-";
+			break;
+		case hungerHpCount > 80:mouth.innerHTML = "▿";
+			break;
 	}
 
-	//Start game
-	core();
-	let coreUpdate = setInterval(core, 100 * day);
-
-	//Main function of tamagotchi
-	function core() {
-		//console.log(tmgch);
-		sleepHpCount = (tmgch.sleep / maxSleep * 100).toFixed(2);
-		hungerHpCount = (tmgch.hunger / maxHunger * 100).toFixed(2);
-		playHpCount = (tmgch.play / maxPlay * 100).toFixed(2);
-		dirtyHpCount = (tmgch.dirty / maxPlay * 100).toFixed(2);
-
-		//Scores
-		score++;
-		scoreBar.innerHTML = score;
-
-		//Death ability
-		if ((playHpCount <= 0) || (sleepHpCount <= 0) || (hungerHpCount <= 0) || (dirtyHpCount >= 99)) {
-			playHpCount = 0;
-			sleepHpCount = 0;
-			hungerHpCount = 0;
-			dirtyHpCount = 100;
-			clearInterval(coreUpdate);
-			alert('Your score: ' + score + '\n ╭(×_×)╮');
-		}
-
-		//Max health percentage (real)
-		//Little help for player
-		if (tmgch.sleep >= (maxSleep + (maxSleep / 100 * 20))) {
-			tmgch.sleep = maxSleep + (maxSleep / 100 * 20);
-		}
-
-		if (tmgch.hunger >= (maxHunger + (maxHunger / 100 * 20))) {
-			tmgch.hunger = maxHunger + (maxHunger / 100 * 20);
-		}
-
-		if (tmgch.play >= (maxPlay + (maxPlay / 100 * 20))) {
-			tmgch.play = maxPlay + (maxPlay / 100 * 20);
-		}
-		//Min dirty percentage (real)
-		if(tmgch.dirty <= (minDirty + (minDirty / 100 * 20))){
-			tmgch.dirty = 0;
-		}
-
-		//Max health percentage (for player)
-		if ((tmgch.sleep / maxSleep * 100) > 100) {
-			sleepHpCount = 100;
-		}
-		if ((tmgch.hunger / maxHunger * 100) > 100) {
-			hungerHpCount = 100;
-		}
-		if ((tmgch.play / maxPlay * 100) > 100) {
-			playHpCount = 100;
-		}
-		//Min dirty percentage (for player)
-		if((tmgch.dirty / minDirty * 100) < 0) {
-			dirtyHpCount = 0;
-		}
-
-		//Show HP on screen
-		sleepHp.innerHTML = sleepHpCount;
-		hungerHp.innerHTML = hungerHpCount;
-		playHp.innerHTML = playHpCount;
-		dirtyHp.innerHTML = dirtyHpCount;
-
-		//Remove HP every tick
-		tmgch.tick();
-
-		//Animations
-
-		//Hunger bar
-		switch(true){
-			case hungerHpCount <= 0:mouth.innerHTML = "_";
-				break;
-			case hungerHpCount < 20:mouth.innerHTML = "0";
-				break;
-			case hungerHpCount < 40:mouth.innerHTML = "O";
-				break;
-			case hungerHpCount < 60:mouth.innerHTML = "o";
-				break;
-			case hungerHpCount < 80:mouth.innerHTML = "-";
-				break;
-			case hungerHpCount > 80:mouth.innerHTML = "▿";
-				break;
-		}
-	
-		//Sleep bar
-		switch(true){
+    //Sleep bar
+    switch(true){
 			case sleepHpCount <= 0:
 				eyeLeft.innerHTML = "×";
 				eyeRight.innerHTML = "×";
@@ -308,37 +275,41 @@ function startGame() {
 				break;
 		}
 
-		//Play bar
-		if (playHpCount <= 0) {
-			effectRight.innerHTML = "   ";
-			effectLeft.innerHTML = "   ";
-			handRight.innerHTML = "╮";
-			handLeft.innerHTML = "╭";
-		} else if (playHpCount < 40) {
-			effectRight.innerHTML = "*  ";
-			effectLeft.innerHTML = "   ";
-			handRight.innerHTML = " ";
-			handLeft.innerHTML = " ";
-		} else if (playHpCount < 60) {
-			effectLeft.innerHTML = "   ";
-			effectRight.innerHTML = "   ";
-			handRight.innerHTML = "╮";
-			handLeft.innerHTML = "╭";
-		} else if (playHpCount < 80) {
-			effectLeft.innerHTML = "  ✧";
-			effectRight.innerHTML = "✧  ";
-			handRight.innerHTML = "╭";
-			handLeft.innerHTML = "╮";
-		} else if (playHpCount < 90) {
-			effectLeft.innerHTML = " ˖✧";
-			effectRight.innerHTML = "✧˖ ";
-			handRight.innerHTML = "/";
-			handLeft.innerHTML = "\\";
-		} else if (playHpCount > 90) {
-			effectLeft.innerHTML = "°˖✧";
-			effectRight.innerHTML = "✧˖°";
-			handRight.innerHTML = "◜";
-			handLeft.innerHTML = "◝";
-		}
-	}
+    //Play bar
+    if (playHpCount <= 0) {
+      effectRight.innerHTML = "   ";
+      effectLeft.innerHTML = "   ";
+      handRight.innerHTML = "╮";
+      handLeft.innerHTML = "╭";
+    } else if (playHpCount < 40) {
+      effectRight.innerHTML = "*  ";
+      effectLeft.innerHTML = "   ";
+      handRight.innerHTML = " ";
+      handLeft.innerHTML = " ";
+    } else if (playHpCount < 60) {
+      effectLeft.innerHTML = "   ";
+      effectRight.innerHTML = "   ";
+      handRight.innerHTML = "╮";
+      handLeft.innerHTML = "╭";
+    } else if (playHpCount < 80) {
+      effectLeft.innerHTML = "  ✧";
+      effectRight.innerHTML = "✧  ";
+      handRight.innerHTML = "╭";
+      handLeft.innerHTML = "╮";
+    } else if (playHpCount < 90) {
+      effectLeft.innerHTML = " ˖✧";
+      effectRight.innerHTML = "✧˖ ";
+      handRight.innerHTML = "/";
+      handLeft.innerHTML = "\\";
+    } else if (playHpCount > 90) {
+      effectLeft.innerHTML = "°˖✧";
+      effectRight.innerHTML = "✧˖°";
+      handRight.innerHTML = "◜";
+      handLeft.innerHTML = "◝";
+    }
+  }
+}
+function exitMenu() {
+    document.querySelector(".main-menu-screen").classList.toggle("hide");
+    document.querySelector(".menu-screen-exit").classList.toggle("hide");
 }

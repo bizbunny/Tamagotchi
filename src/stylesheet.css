@@ -60,7 +60,7 @@ h3 {
   color: #ffc0a5;
 }
 
-.settings-buttons {
+.settings-buttons{
   width: 100%;
   text-align: center;
 }
@@ -92,8 +92,11 @@ h3 {
   font-family: 'DM Mono', monospace;
   font-weight: 500;
 }
-
-.buttons a, .menu-buttons a {
+.hidden-buttons{
+  display: none;
+}
+.buttons a, .menu-buttons a,
+.hidden-buttons a {
   display: inline-block;
   font-size: 40px;
   background-color: transparent;

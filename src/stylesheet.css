@@ -92,7 +92,7 @@ h3 {
   font-family: 'DM Mono', monospace;
   font-weight: 500;
 }
-.hidden-buttons{
+#action-play-again{
   display: none;
 }
 .buttons a, .menu-buttons a,

@@ -191,8 +191,10 @@ function startGame() {
       sleepHpCount = 0;
       hungerHpCount = 0;
 	  dirtyHpCount = 100;
+	  
       clearInterval(coreUpdate);
       alert('Your score: ' + score + '\n ╭(×_×)╮');
+	  playAgainBtn.style.display="inline-block";
     }
 
     //Max health percentage (real)

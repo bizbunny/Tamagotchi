@@ -1,3 +1,4 @@
+var playAgainBtn = document.getElementById("action-play-again");
 //
 //Constants for buttons
 const sleepBtn = document.querySelector("#action-sleep");
@@ -207,7 +208,9 @@ function startGame() {
     if (tmgch.play >= (maxPlay + (maxPlay / 100 * 20))) {
       tmgch.play = maxPlay + (maxPlay / 100 * 20);
     }
-
+	if (tmgch.dirty <0){
+		tmgch.dirty = 0;
+	}
     //Max health percentage (for player)
     if ((tmgch.sleep / maxSleep * 100) > 100) {
       sleepHpCount = 100;
@@ -218,7 +221,9 @@ function startGame() {
     if ((tmgch.play / maxPlay * 100) > 100) {
       playHpCount = 100;
     }
-
+	if((tmgch.dirty/maxPlay * 100) <0) {
+		dirtyHpCount = 0;
+	}
     //Show HP on screen
     sleepHp.innerHTML = sleepHpCount;
     hungerHp.innerHTML = hungerHpCount;

@@ -42,8 +42,8 @@ const maxPlay = 300;
 const minDirty = 0;
 //Game speed
 let day = 20;
-
-//New object
+//
+//New Class object declared
 function Tamagotchi() {
   this.sleep = maxSleep;
   this.hunger = maxHunger;
@@ -167,7 +167,7 @@ function startGame() {
   var tamagotchiName = prompt("Please, enter a name of your tamagotchi:", "");
   document.querySelector("#name").innerHTML = tamagotchiName;
   if (tamagotchiName == null || tamagotchiName.replace(/\s/g, '') == "") {
-    tamagotchiName = "Tamagotchi";
+    tamagotchiName = "Tama";
     document.querySelector("#name").innerHTML = tamagotchiName;
   }
 

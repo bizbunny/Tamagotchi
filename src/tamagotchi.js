@@ -1,3 +1,5 @@
+//
+//variables for buttons
 var playAgainBtn = document.getElementById("action-play-again");
 //
 //Constants for buttons

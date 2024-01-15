@@ -111,12 +111,12 @@ h3 {
   transition: background-color .1s, color .1s;
 }
 
-.buttons a:hover, .menu-buttons a:hover {
+.buttons a:hover, .menu-buttons a:hover , .hidden-buttons a:hover {
   background-color: #210645;
   color: #ffc0a5;
 }
 
-.buttons, .menu-buttons {
+.buttons, .menu-buttons , .hidden-buttons{
   width: 100%;
   text-align: center;
 }

@@ -17,6 +17,8 @@ const settingsBackBtn = document.querySelector("#action-settings-back");
 const difHardBtn = document.querySelector("#action-settings-difficulty-hard");
 const difNormalBtn = document.querySelector("#action-settings-difficulty-normal");
 const difEasyBtn = document.querySelector("#action-settings-difficulty-easy");
+const gameAudioOn = document.querySelector("#gameaudio-on");
+const gameAudioOff = document.querySelector("#gameaudio-off");
 const exitBtn = document.querySelector("#action-menu-exit");
 
 const nightModeOffBtn = document.querySelector("#nightmode-off");
@@ -123,7 +125,14 @@ difEasyBtn.addEventListener("click", function() {
   day = 40;
   document.querySelector("#difSet").innerHTML = "Easy";
 });
-
+gameAudioOn.addEventListener("click", function() {
+	document.querySelector("gameaudio").innerHTML="On";
+	//add something ***
+});
+gameAudioOff.addEventListener("click", function() {
+	document.querySelector("gameaudio").innerHTML="Off";
+	//add something ***
+});
 settingsBackBtn.addEventListener("click", function() {
   MainMenu();
 });
@@ -131,7 +140,7 @@ backMenuBtn_.addEventListener("click", function() {
 	GameToMenu();
 });
 playAgainBtn_.addEventListener("click", function(){
-
+	//add something***
 })
 nightModeOffBtn.addEventListener("click", function() {
   nightModeOff();

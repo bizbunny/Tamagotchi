@@ -1,6 +1,7 @@
 //
 //variables for buttons
-var playAgainBtn = document.getElementById("action-play-again");
+var playAgainBtn = document.getElementById("action-play-again");//to adjust visibility
+var backMenuBtn = document.getElementById("action-back-menu");
 //
 //Constants for buttons
 const sleepBtn = document.querySelector("#action-sleep");
@@ -8,6 +9,8 @@ const feedBtn = document.querySelector("#action-feed");
 const playBtn = document.querySelector("#action-play");
 const startBtn = document.querySelector("#action-menu-start-game");
 const cleanBtn = document.querySelector("#action-clean");
+const playAgainBtn_ = document.querySelector("#action-play-again");
+const backMenuBtn_ = document.querySelector("#action-back-menu");
 
 const settingsBtn = document.querySelector("#action-menu-settings");
 const settingsBackBtn = document.querySelector("#action-settings-back");
@@ -124,7 +127,12 @@ difEasyBtn.addEventListener("click", function() {
 settingsBackBtn.addEventListener("click", function() {
   MainMenu();
 });
+backMenuBtn_.addEventListener("click", function() {
+	GameToMenu();
+});
+playAgainBtn_.addEventListener("click", function(){
 
+})
 nightModeOffBtn.addEventListener("click", function() {
   nightModeOff();
 });
@@ -153,7 +161,10 @@ function MainMenu() {
   document.querySelector(".menu-screen-settings").classList.toggle("hide");
   document.querySelector(".main-menu-screen").classList.toggle("hide");
 }
-
+function GameToMenu() {
+  document.querySelector(".game-screen").classList.toggle("hide");
+  document.querySelector(".main-menu-screen").classList.toggle("hide");
+}
 function settingsMenu() {
   document.querySelector(".main-menu-screen").classList.toggle("hide");
   document.querySelector(".menu-screen-settings").classList.toggle("hide");
@@ -197,6 +208,7 @@ function startGame() {
       clearInterval(coreUpdate);
       alert('Your score: ' + score + '\n ╭(×_×)╮');
 	  playAgainBtn.style.display="inline-block";
+	  backMenuBtn.style.display="inline-block";
     }
 
     //Max health percentage (real)

@@ -24,11 +24,13 @@ h3 {
   font-family: 'DM Mono', monospace;
   font-weight: 300;
 }
-
+/*CONTROL WHAT IS ON SCREEN*/
 .hide {
   display: none;
 }
-
+.show{
+  display: inline-block;
+}
 /*MENU SCREEN*/
 
 .menu , .settings , .exit  {

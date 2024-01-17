@@ -2,7 +2,6 @@
 //variables for buttons
 var playAgainBtn = document.getElementById("action-play-again");//to adjust visibility
 var backMenuBtn = document.getElementById("action-back-menu");
-var musicPlayer = document.getElementById("bgmusic");
 //
 //Constants for buttons
 const sleepBtn = document.querySelector("#action-sleep");
@@ -161,13 +160,14 @@ function nightModeOff() {
 //Game Audio / Music Toggle
 function gameAudioOn(){
 	document.querySelector('#gameaudio').innerHTML = "on";
-	//add something ***coreUpdate
-  musicPlayer.play();
+	//add something ***
+	document.querySelector('audio').play();
+
 }
 function gameAudioOff(){
 	document.querySelector('#gameaudio').innerHTML = "off";
 	//add something ***
-  musiccPlayer.pause();
+	document.querySelector('audio').pause();
 }
 //Togglers for buttons
 document.querySelector(".game-screen").classList.toggle("hide");

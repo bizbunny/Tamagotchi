@@ -160,20 +160,22 @@ function nightModeOff() {
 //Game Audio / Music Toggle
 function gameAudioOn(){
 	document.querySelector('#gameaudio').innerHTML = "on";
-	//add something ***
 	document.querySelector('audio').play();
 
 }
 function gameAudioOff(){
 	document.querySelector('#gameaudio').innerHTML = "off";
-	//add something ***
 	document.querySelector('audio').pause();
 }
-//Togglers for buttons
+//
+//Togglers for buttons----
+//
+//main screens
 document.querySelector(".game-screen").classList.toggle("hide");
 document.querySelector(".menu-screen-settings").classList.toggle("hide");
 document.querySelector(".menu-screen-exit").classList.toggle("hide");
-
+//
+//for buttons
 function MainMenu() {
   document.querySelector(".menu-screen-settings").classList.toggle("hide");
   document.querySelector(".main-menu-screen").classList.toggle("hide");
@@ -287,29 +289,23 @@ function startGame() {
 
     //Sleep bar
     switch(true){
-			case sleepHpCount <= 0:
-				eyeLeft.innerHTML = "×";
+			case sleepHpCount <= 0: eyeLeft.innerHTML = "×";
 				eyeRight.innerHTML = "×";
 				break;
-			case sleepHpCount < 20:
-				eyeLeft.innerHTML = "◡";
+			case sleepHpCount < 20: eyeLeft.innerHTML = "◡";
 				eyeRight.innerHTML = "◡";
 				mouth.innerHTML = ".";
 				break;
-			case sleepHpCount < 40:
-				eyeLeft.innerHTML = " ´ ";
+			case sleepHpCount < 40: eyeLeft.innerHTML = " ´ ";
 				eyeRight.innerHTML = " ` ";
 				break;
-			case sleepHpCount < 60:
-				eyeLeft.innerHTML = "●";
+			case sleepHpCount < 60: eyeLeft.innerHTML = "●";
 				eyeRight.innerHTML = "●";
 				break;
-			case sleepHpCount < 80:
-				eyeLeft.innerHTML = "・";
+			case sleepHpCount < 80: eyeLeft.innerHTML = "・";
 				eyeRight.innerHTML = "・";
 				break;
-			case sleepHpCount > 80:
-				eyeLeft.innerHTML = "＾";
+			case sleepHpCount > 80: eyeLeft.innerHTML = "＾";
 				eyeRight.innerHTML = "＾";
 				break;
 		}

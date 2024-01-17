@@ -181,10 +181,9 @@ function MainMenu() {
   document.querySelector(".main-menu-screen").classList.toggle("hide");
 }
 function GameToMenu() {
-  
   document.querySelector(".game-screen").classList.toggle("hide");
   document.querySelector(".main-menu-screen").classList.toggle("hide");
-  
+  resetAll();
 }
 function settingsMenu() {
   document.querySelector(".main-menu-screen").classList.toggle("hide");
@@ -347,4 +346,7 @@ function startGame() {
 function exitMenu() {
     document.querySelector(".main-menu-screen").classList.toggle("hide");
     document.querySelector(".menu-screen-exit").classList.toggle("hide");
+}
+function resetAll(){
+	
 }

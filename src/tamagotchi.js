@@ -17,12 +17,12 @@ const settingsBackBtn = document.querySelector("#action-settings-back");
 const difHardBtn = document.querySelector("#action-settings-difficulty-hard");
 const difNormalBtn = document.querySelector("#action-settings-difficulty-normal");
 const difEasyBtn = document.querySelector("#action-settings-difficulty-easy");
-const gameAudioOn = document.querySelector("#gameaudio-on");
-const gameAudioOff = document.querySelector("#gameaudio-off");
 const exitBtn = document.querySelector("#action-menu-exit");
 
 const nightModeOffBtn = document.querySelector("#nightmode-off");
 const nightModeOnBtn = document.querySelector("#nightmode-on");
+const gameAudioOnBtn = document.querySelector("#gameaudio-on");
+const gameAudioOffBtn = document.querySelector("#gameaudio-off");
 //
 //Constants for main bar
 const sleepHp = document.querySelector("#sleep-hp");
@@ -111,6 +111,7 @@ settingsBtn.addEventListener("click", function() {
 exitBtn.addEventListener("click", function () {
     exitMenu();
 });
+
 difHardBtn.addEventListener("click", function() {
   day = 5;
   document.querySelector("#difSet").innerHTML = "Hard";
@@ -125,14 +126,6 @@ difEasyBtn.addEventListener("click", function() {
   day = 40;
   document.querySelector("#difSet").innerHTML = "Easy";
 });
-gameAudioOn.addEventListener("click", function() {
-	document.querySelector("gameaudio").innerHTML="On";
-	//add something ***
-});
-gameAudioOff.addEventListener("click", function() {
-	document.querySelector("gameaudio").innerHTML="Off";
-	//add something ***
-});
 settingsBackBtn.addEventListener("click", function() {
   MainMenu();
 });
@@ -145,11 +138,15 @@ playAgainBtn_.addEventListener("click", function(){
 nightModeOffBtn.addEventListener("click", function() {
   nightModeOff();
 });
-
 nightModeOnBtn.addEventListener("click", function() {
   nightModeOn();
 });
-
+gameAudioOnBtn.addEventListener("click", function() {
+	gameAudioOn();
+});
+gameAudioOffBtn.addEventListener("click", function() {
+	gameAudioOff();
+});
 //NightMode toggle
 function nightModeOn() {
   document.querySelector('body').classList.add("nightmode-on");
@@ -160,7 +157,15 @@ function nightModeOff() {
   document.querySelector('body').classList.remove("nightmode-on");
   document.querySelector('#nightmode').innerHTML = "off";
 }
-
+//Game Audio / Music Toggle
+function gameAudioOn(){
+	document.querySelector('#gameaudio').innerHTML = "on";
+	//add something ***
+}
+function gameAudioOff(){
+	document.querySelector('#gameaudio').innerHTML = "off";
+	//add something ***
+}
 //Togglers for buttons
 document.querySelector(".game-screen").classList.toggle("hide");
 document.querySelector(".menu-screen-settings").classList.toggle("hide");
@@ -178,7 +183,6 @@ function settingsMenu() {
   document.querySelector(".main-menu-screen").classList.toggle("hide");
   document.querySelector(".menu-screen-settings").classList.toggle("hide");
 }
-
 function startGame() {
   document.querySelector(".game-screen").classList.toggle("hide");
   document.querySelector(".main-menu-screen").classList.toggle("hide");

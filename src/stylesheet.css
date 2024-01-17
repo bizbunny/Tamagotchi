@@ -148,7 +148,10 @@ body.nightmode-on {
 
 body.nightmode-on .settings-buttons a,
 body.nightmode-on .buttons a,
-body.nightmode-on .menu-buttons a {
+body.nightmode-on .menu-buttons a,
+body.nightmode-on .gameaudio-on,
+body.nightmode-on .gameaudio-off
+{
   color: #ffc0a5;
   border: 2px solid #ffc0a5;
 }
@@ -156,7 +159,9 @@ body.nightmode-on .menu-buttons a {
 body.nightmode-on .settings-buttons a:hover,
 body.nightmode-on #name,
 body.nightmode-on .buttons a:hover,
-body.nightmode-on .menu-buttons a:hover {
+body.nightmode-on .menu-buttons a:hover,
+body.nightmode-on .gameaudio-on a:hover,
+body.nightmode-on .gameaudio-off a:hover{
   background-color: #ffc0a5;
   color: #210645;
 }
